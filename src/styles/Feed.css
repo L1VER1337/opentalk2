@@ -1,0 +1,232 @@
+/* Стили для ленты постов */
+.feed {
+  display: flex;
+  flex-direction: column;
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 10px;
+  flex: 1;
+}
+
+.feed-tabs {
+  display: flex;
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+  transition: border-color var(--transition-speed);
+  position: sticky;
+  top: 0;
+  background-color: inherit;
+  z-index: 5;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 15px 0;
+  font-weight: 600;
+  position: relative;
+  cursor: pointer;
+  transition: color var(--transition-speed);
+}
+
+.tab.active {
+  color: var(--light-primary);
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--light-primary);
+  border-radius: 4px 4px 0 0;
+}
+
+.create-post {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  border-radius: var(--border-radius-md);
+  margin-bottom: 15px;
+  transition: background-color var(--transition-speed), border-color var(--transition-speed);
+  box-shadow: var(--shadow-sm);
+}
+
+.post-avatar {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.post-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.post-input-container {
+  flex-grow: 1;
+}
+
+.post-input-container textarea {
+  width: 100%;
+  min-height: 80px;
+  border: none;
+  resize: none;
+  background: transparent;
+  font-size: 1.1rem;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 10px;
+  outline: none;
+  color: inherit;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-attachments {
+  display: flex;
+  gap: 10px;
+}
+
+.attach-btn {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-speed);
+}
+
+.attach-btn svg,
+.attach-btn i {
+  font-size: 1.2rem;
+}
+
+.post-submit-btn {
+  padding: 8px 20px;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: background-color var(--transition-speed), transform 0.2s;
+}
+
+.post-submit-btn:hover {
+  transform: translateY(-2px);
+}
+
+.post-submit-btn:active {
+  transform: translateY(1px);
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+/* Анимация для ленты */
+.posts .post {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Стили для светлой темы */
+.light-theme .feed-tabs {
+  border-color: var(--light-border);
+  background-color: var(--light-background);
+}
+
+.light-theme .tab {
+  color: var(--light-text-secondary);
+}
+
+.light-theme .tab.active {
+  color: var(--light-primary);
+}
+
+.light-theme .tab.active::after {
+  background-color: var(--light-primary);
+}
+
+.light-theme .create-post {
+  background-color: var(--light-surface);
+  border: 1px solid var(--light-border);
+}
+
+.light-theme .post-submit-btn {
+  background-color: var(--light-primary);
+  color: white;
+}
+
+.light-theme .post-submit-btn:hover {
+  background-color: var(--light-secondary);
+}
+
+.light-theme .attach-btn:hover {
+  background-color: var(--light-hover);
+}
+
+.light-theme .attach-btn svg,
+.light-theme .attach-btn i {
+  color: var(--light-primary);
+}
+
+/* Стили для темной темы */
+.dark-theme .feed-tabs {
+  border-color: var(--dark-border);
+  background-color: var(--dark-background);
+}
+
+.dark-theme .tab {
+  color: var(--dark-text-secondary);
+}
+
+.dark-theme .tab.active {
+  color: var(--dark-primary);
+}
+
+.dark-theme .tab.active::after {
+  background-color: var(--dark-primary);
+}
+
+.dark-theme .create-post {
+  background-color: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+}
+
+.dark-theme .post-submit-btn {
+  background-color: var(--dark-primary);
+  color: white;
+}
+
+.dark-theme .post-submit-btn:hover {
+  background-color: var(--dark-secondary);
+}
+
+.dark-theme .attach-btn:hover {
+  background-color: var(--dark-hover);
+}
+
+.dark-theme .attach-btn svg,
+.dark-theme .attach-btn i {
+  color: var(--dark-primary);
+} 

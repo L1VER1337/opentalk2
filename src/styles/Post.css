@@ -1,0 +1,225 @@
+/* Стили для поста */
+.post {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  border-radius: var(--border-radius-md);
+  transition: background-color var(--transition-speed), transform 0.3s, box-shadow 0.3s, border-color var(--transition-speed);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.post:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.post-content {
+  flex-grow: 1;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.post-user-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.post-username {
+  font-weight: 600;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.post-handle,
+.post-time {
+  color: var(--light-text-secondary);
+  font-size: 0.9rem;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.post-menu {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color var(--transition-speed);
+}
+
+.post-text {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.post-image {
+  margin-bottom: 10px;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+}
+
+.post-image img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.post-image img:hover {
+  transform: scale(1.02);
+}
+
+.post-image-grid {
+  display: grid;
+  grid-gap: 5px;
+  margin-bottom: 10px;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+}
+
+.post-image-grid.grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.post-image-grid.grid-3 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 200px 200px;
+}
+
+.post-image-grid.grid-3 img:first-child {
+  grid-row: span 2;
+}
+
+.post-image-grid.grid-4 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 200px 200px;
+}
+
+.post-image-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.post-image-grid img:hover {
+  transform: scale(1.02);
+}
+
+.post-actions-bar {
+  display: flex;
+  justify-content: space-between;
+  max-width: 425px;
+  margin-top: 5px;
+}
+
+.post-action {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.post-action svg,
+.post-action i {
+  font-size: 1.1rem;
+}
+
+.post-action span {
+  font-size: 0.9rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.post-action .liked {
+  color: #e0245e !important;
+}
+
+/* Стили для светлой темы */
+.light-theme .post {
+  background-color: var(--light-surface);
+  border: 1px solid var(--light-border);
+}
+
+.light-theme .post-handle,
+.light-theme .post-time {
+  color: var(--light-text-secondary);
+}
+
+.light-theme .post-menu:hover {
+  background-color: var(--light-hover);
+}
+
+.light-theme .post-action:hover {
+  background-color: var(--light-hover);
+}
+
+.light-theme .post-action:hover:nth-child(1) {
+  color: var(--light-primary);
+}
+
+.light-theme .post-action:hover:nth-child(2) {
+  color: #00ba7c;
+}
+
+.light-theme .post-action:hover:nth-child(3) {
+  color: #e0245e;
+}
+
+.light-theme .post-action:hover:nth-child(4) {
+  color: var(--light-primary);
+}
+
+.light-theme .post-action:hover:nth-child(5) {
+  color: var(--light-primary);
+}
+
+/* Стили для темной темы */
+.dark-theme .post {
+  background-color: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+}
+
+.dark-theme .post-handle,
+.dark-theme .post-time {
+  color: var(--dark-text-secondary);
+}
+
+.dark-theme .post-menu:hover {
+  background-color: var(--dark-hover);
+}
+
+.dark-theme .post-action:hover {
+  background-color: var(--dark-hover);
+}
+
+.dark-theme .post-action:hover:nth-child(1) {
+  color: var(--dark-primary);
+}
+
+.dark-theme .post-action:hover:nth-child(2) {
+  color: #00ba7c;
+}
+
+.dark-theme .post-action:hover:nth-child(3) {
+  color: #e0245e;
+}
+
+.dark-theme .post-action:hover:nth-child(4) {
+  color: var(--dark-primary);
+}
+
+.dark-theme .post-action:hover:nth-child(5) {
+  color: var(--dark-primary);
+} 

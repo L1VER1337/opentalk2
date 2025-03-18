@@ -1,0 +1,496 @@
+/* Стили для боковой панели */
+.sidebar {
+  height: 100vh;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: hidden;
+  transition: background-color var(--transition-speed);
+  position: sticky;
+  top: 0;
+}
+
+.logo h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.sidebar-menu {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  border-radius: var(--border-radius-md);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+  cursor: pointer;
+}
+
+.menu-item svg,
+.menu-item i {
+  font-size: 1.1rem;
+  width: 22px;
+  text-align: center;
+}
+
+.premium-menu-item {
+  color: var(--light-premium);
+  background: linear-gradient(135deg, rgba(247, 223, 30, 0.1) 0%, rgba(247, 223, 30, 0.05) 100%);
+  border: 1px solid rgba(247, 223, 30, 0.3);
+  margin-top: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-menu-item::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 40px;
+  height: 40px;
+  background: rgba(247, 223, 30, 0.3);
+  border-radius: 50%;
+  filter: blur(10px);
+  opacity: 0.7;
+}
+
+.premium-menu-item:hover {
+  background: linear-gradient(135deg, rgba(247, 223, 30, 0.15) 0%, rgba(247, 223, 30, 0.08) 100%);
+  border: 1px solid rgba(247, 223, 30, 0.4);
+}
+
+/* Новые стили для переключателя темы */
+.theme-toggle {
+  margin: 10px 0;
+}
+
+.theme-toggle button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  border-radius: var(--border-radius-md);
+  width: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, 
+    rgba(255, 255, 255, 0) 30%, 
+    rgba(255, 255, 255, 0.1) 40%, 
+    rgba(255, 255, 255, 0) 50%);
+  transform: translateX(-100%);
+  transition: transform 0.8s ease-in-out;
+}
+
+.theme-toggle button:hover:before {
+  transform: translateX(100%);
+}
+
+.theme-toggle button svg {
+  font-size: 1.2rem;
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.theme-toggle button:hover svg {
+  transform: rotate(30deg);
+}
+
+.theme-toggle button span {
+  font-weight: 500;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle button:hover span {
+  transform: translateX(3px);
+}
+
+/* Стили для тумблера */
+.theme-toggle button .toggle-switch {
+  display: inline-block;
+  position: relative;
+  width: 42px;
+  height: 22px;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 11px;
+  margin-left: auto;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle button .toggle-switch:before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dark-theme .theme-toggle button .toggle-switch {
+  background-color: var(--dark-primary);
+}
+
+.dark-theme .theme-toggle button .toggle-switch:before {
+  transform: translateX(20px);
+  background-color: var(--dark-surface);
+}
+
+.light-theme .theme-toggle button .toggle-switch {
+  background-color: #e0e0e0;
+}
+
+.light-theme .theme-toggle button .toggle-switch:before {
+  transform: translateX(0);
+  background-color: white;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  margin-top: auto;
+}
+
+.avatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.status {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: var(--light-success);
+  border-radius: 50%;
+  border: 2px solid var(--light-surface);
+  bottom: 0;
+  right: 0;
+}
+
+.status.online {
+  background-color: var(--light-success);
+}
+
+.status.away {
+  background-color: var(--light-warning);
+}
+
+.status.do_not_disturb {
+  background-color: var(--light-danger);
+}
+
+.status.offline {
+  background-color: var(--light-text-secondary);
+}
+
+.user-info {
+  flex-grow: 1;
+}
+
+.username {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.user-status {
+  font-size: 0.8rem;
+  color: var(--light-text-secondary);
+  margin: 0;
+}
+
+/* Стили для светлой темы */
+.light-theme .sidebar {
+  background-color: var(--light-surface);
+  border-right: 1px solid var(--light-border);
+}
+
+.light-theme .logo h1 {
+  color: var(--light-primary);
+}
+
+.light-theme .menu-item {
+  color: var(--light-text-secondary);
+}
+
+.light-theme .menu-item.active,
+.light-theme .menu-item:hover {
+  background-color: var(--light-hover);
+  color: var(--light-primary);
+}
+
+.light-theme .theme-toggle button {
+  background-color: var(--light-surface);
+  border: 1px solid var(--light-border);
+  color: var(--light-text-primary);
+}
+
+.light-theme .theme-toggle button:hover {
+  background-color: var(--light-hover);
+  border-color: var(--light-border);
+}
+
+.light-theme .theme-toggle button svg {
+  color: #FFC107;
+}
+
+.light-theme .user-profile:hover {
+  background-color: var(--light-hover);
+}
+
+/* Стили для темной темы */
+.dark-theme .sidebar {
+  background-color: var(--dark-surface);
+  border-right: 1px solid var(--dark-border);
+}
+
+.dark-theme .logo h1 {
+  color: var(--dark-primary);
+}
+
+.dark-theme .menu-item {
+  color: var(--dark-text-secondary);
+}
+
+.dark-theme .menu-item.active,
+.dark-theme .menu-item:hover {
+  background-color: var(--dark-hover);
+  color: var(--dark-primary);
+}
+
+.dark-theme .theme-toggle button {
+  background-color: var(--dark-hover);
+  border: 1px solid var(--dark-border);
+  color: var(--dark-text-primary);
+}
+
+.dark-theme .theme-toggle button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--dark-primary);
+}
+
+.dark-theme .theme-toggle button svg {
+  color: #FFEB3B;
+}
+
+.dark-theme .user-profile:hover {
+  background-color: var(--dark-hover);
+}
+
+.dark-theme .status {
+  border-color: var(--dark-surface);
+}
+
+.dark-theme .premium-menu-item {
+  color: var(--dark-premium);
+  background: linear-gradient(135deg, rgba(247, 223, 30, 0.15) 0%, rgba(247, 223, 30, 0.07) 100%);
+  border: 1px solid rgba(247, 223, 30, 0.25);
+}
+
+.dark-theme .premium-menu-item:hover {
+  background: linear-gradient(135deg, rgba(247, 223, 30, 0.2) 0%, rgba(247, 223, 30, 0.1) 100%);
+  border: 1px solid rgba(247, 223, 30, 0.35);
+}
+
+/* Модальное окно статуса */
+.status-modal {
+  position: absolute;
+  bottom: 70px;
+  left: 20px;
+  width: calc(100% - 40px);
+  background-color: var(--light-surface);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+  overflow: hidden;
+  border: 1px solid var(--light-border);
+  animation: fadeIn 0.2s ease-in-out;
+  max-width: 300px; /* Ограничиваем максимальную ширину */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.status-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--light-border);
+}
+
+.status-modal-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--light-text-primary);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--light-text-secondary);
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: var(--light-text-primary);
+}
+
+.status-options {
+  padding: 10px;
+}
+
+.status-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.status-option:hover {
+  background-color: var(--light-hover);
+}
+
+.status-option.active {
+  background-color: var(--light-hover);
+  font-weight: 500;
+}
+
+.status-option span {
+  color: var(--light-text-primary);
+}
+
+.status-modal-footer {
+  padding: 12px 15px;
+  border-top: 1px solid var(--light-border);
+}
+
+.edit-profile-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--light-primary);
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+  white-space: nowrap; /* Предотвращаем перенос текста */
+  overflow: hidden; /* Обрезаем слишком длинный текст */
+  text-overflow: ellipsis; /* Добавляем многоточие при обрезке */
+}
+
+.edit-profile-link:hover {
+  color: var(--light-secondary);
+}
+
+/* Темная тема для модального окна */
+.dark-theme .status-modal {
+  background-color: var(--dark-surface);
+  border-color: var(--dark-border);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme .status-modal-header {
+  border-bottom-color: var(--dark-border);
+}
+
+.dark-theme .status-modal-header h3 {
+  color: var(--dark-text-primary);
+}
+
+.dark-theme .close-btn {
+  color: var(--dark-text-secondary);
+}
+
+.dark-theme .close-btn:hover {
+  color: var(--dark-text-primary);
+}
+
+.dark-theme .status-option:hover {
+  background-color: var(--dark-hover);
+}
+
+.dark-theme .status-option.active {
+  background-color: var(--dark-hover);
+}
+
+.dark-theme .status-option span {
+  color: var(--dark-text-primary);
+}
+
+.dark-theme .status-modal-footer {
+  border-top-color: var(--dark-border);
+}
+
+.dark-theme .edit-profile-link {
+  color: var(--dark-primary);
+}
+
+.dark-theme .edit-profile-link:hover {
+  color: var(--dark-secondary);
+}
+
+/* Стили для статусов в темной теме */
+.dark-theme .status.online {
+  background-color: var(--dark-success);
+}
+
+.dark-theme .status.away {
+  background-color: var(--dark-warning);
+}
+
+.dark-theme .status.do_not_disturb {
+  background-color: var(--dark-danger);
+}
+
+.dark-theme .status.offline {
+  background-color: var(--dark-text-secondary);
+} 

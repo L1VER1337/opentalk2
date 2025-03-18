@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenTalk - Социальная сеть</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="light-theme">
+    <div class="app-container">
+        <!-- Боковое меню в стиле Discord -->
+        <div class="sidebar">
+            <div class="logo">
+                <h1>OpenTalk</h1>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Главная</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-search"></i>
+                    <span>Поиск</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-bell"></i>
+                    <span>Уведомления</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Сообщения</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>Звонки</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-video"></i>
+                    <span>Конференции</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-music"></i>
+                    <span>Музыка</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-brain"></i>
+                    <span>ИИ</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-user"></i>
+                    <span>Профиль</span>
+                </div>
+                <div class="menu-item premium-menu-item">
+                    <i class="fas fa-crown"></i>
+                    <span>Премиум</span>
+                </div>
+            </div>
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn">
+                    <i class="fas fa-moon"></i>
+                    <span>Тёмная тема</span>
+                </button>
+            </div>
+            <div class="user-profile">
+                <div class="avatar">
+                    <img src="https://i.pravatar.cc/150?img=12" alt="Аватар пользователя">
+                    <span class="status online"></span>
+                </div>
+                <div class="user-info">
+                    <p class="username">Александр К.</p>
+                    <p class="user-status">В сети</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Основной контент -->
+        <div class="main-content">
+            <!-- Верхняя панель навигации -->
+            <div class="top-nav">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Поиск в OpenTalk...">
+                </div>
+                <div class="nav-actions">
+                    <button class="btn-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <button class="btn-icon">
+                        <i class="fas fa-envelope"></i>
+                        <span class="notification-badge">5</span>
+                    </button>
+                    <button class="btn-icon" id="call-btn">
+                        <i class="fas fa-phone-alt"></i>
+                    </button>
+                    <button class="new-post-btn">
+                        <i class="fas fa-plus"></i>
+                        <span>Новый пост</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Лента постов (как в X) -->
+            <div class="feed">
+                <div class="feed-tabs">
+                    <div class="tab active">Для вас</div>
+                    <div class="tab">Подписки</div>
+                    <div class="tab">Популярное</div>
+                </div>
+
+                <!-- Форма создания поста -->
+                <div class="create-post">
+                    <div class="post-avatar">
+                        <img src="https://i.pravatar.cc/150?img=12" alt="Аватар пользователя">
+                    </div>
+                    <div class="post-input-container">
+                        <textarea placeholder="Что нового?"></textarea>
+                        <div class="post-actions">
+                            <div class="post-attachments">
+                                <button class="attach-btn"><i class="fas fa-image"></i></button>
+                                <button class="attach-btn"><i class="fas fa-video"></i></button>
+                                <button class="attach-btn"><i class="fas fa-poll-h"></i></button>
+                                <button class="attach-btn"><i class="fas fa-smile"></i></button>
+                            </div>
+                            <button class="post-submit-btn">Опубликовать</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Посты -->
+                <div class="posts">
+                    <!-- Пост 1 -->
+                    <div class="post">
+                        <div class="post-avatar">
+                            <img src="https://i.pravatar.cc/150?img=28" alt="Аватар пользователя">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-header">
+                                <div class="post-user-info">
+                                    <p class="post-username">Мария Иванова</p>
+                                    <p class="post-handle">@maria_iv</p>
+                                    <p class="post-time">· 2ч</p>
+                                </div>
+                                <div class="post-menu">
+                                    <i class="fas fa-ellipsis"></i>
+                                </div>
+                            </div>
+                            <div class="post-text">
+                                <p>Наконец-то попробовала новую социальную сеть OpenTalk! Дизайн просто потрясающий, сочетание функций из разных платформ - это именно то, чего не хватало на рынке! 🚀</p>
+                            </div>
+                            <div class="post-image">
+                                <img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Пост изображение">
+                            </div>
+                            <div class="post-actions-bar">
+                                <div class="post-action">
+                                    <i class="far fa-comment"></i>
+                                    <span>42</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="fas fa-retweet"></i>
+                                    <span>12</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-heart"></i>
+                                    <span>128</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-bookmark"></i>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-share-square"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Пост 2 -->
+                    <div class="post">
+                        <div class="post-avatar">
+                            <img src="https://i.pravatar.cc/150?img=33" alt="Аватар пользователя">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-header">
+                                <div class="post-user-info">
+                                    <p class="post-username">Иван Петров</p>
+                                    <p class="post-handle">@ivan_petrov</p>
+                                    <p class="post-time">· 5ч</p>
+                                </div>
+                                <div class="post-menu">
+                                    <i class="fas fa-ellipsis"></i>
+                                </div>
+                            </div>
+                            <div class="post-text">
+                                <p>Работаю над новым проектом с использованием React и TypeScript. Кто еще использует этот стек? Какие библиотеки UI компонентов предпочитаете? #разработка #frontend</p>
+                            </div>
+                            <div class="post-actions-bar">
+                                <div class="post-action">
+                                    <i class="far fa-comment"></i>
+                                    <span>18</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="fas fa-retweet"></i>
+                                    <span>5</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-heart"></i>
+                                    <span>37</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-bookmark"></i>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-share-square"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Пост 3 -->
+                    <div class="post">
+                        <div class="post-avatar">
+                            <img src="https://i.pravatar.cc/150?img=19" alt="Аватар пользователя">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-header">
+                                <div class="post-user-info">
+                                    <p class="post-username">Алексей Смирнов</p>
+                                    <p class="post-handle">@alex_design</p>
+                                    <p class="post-time">· 8ч</p>
+                                </div>
+                                <div class="post-menu">
+                                    <i class="fas fa-ellipsis"></i>
+                                </div>
+                            </div>
+                            <div class="post-text">
+                                <p>Делюсь своим новым дизайн-проектом! Мобильное приложение для фитнес-трекинга с уникальным UI/UX. Отзывы приветствуются!</p>
+                            </div>
+                            <div class="post-image-grid">
+                                <img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Дизайн 1">
+                                <img src="https://images.unsplash.com/photo-1611162618758-2a29a995354b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" alt="Дизайн 2">
+                            </div>
+                            <div class="post-actions-bar">
+                                <div class="post-action">
+                                    <i class="far fa-comment"></i>
+                                    <span>24</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="fas fa-retweet"></i>
+                                    <span>8</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-heart"></i>
+                                    <span>96</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-bookmark"></i>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-share-square"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Правая боковая панель (как в Telegram/X) -->
+        <div class="right-sidebar">
+            <!-- Тренды -->
+            <div class="trends-section">
+                <h3>Актуальные темы</h3>
+                <div class="trend-item">
+                    <div class="trend-category">Технологии</div>
+                    <div class="trend-title">#OpenTalk</div>
+                    <div class="trend-count">8,423 постов</div>
+                </div>
+                <div class="trend-item">
+                    <div class="trend-category">Дизайн</div>
+                    <div class="trend-title">#UXDesign</div>
+                    <div class="trend-count">5,128 постов</div>
+                </div>
+                <div class="trend-item">
+                    <div class="trend-category">Разработка</div>
+                    <div class="trend-title">#ReactJS</div>
+                    <div class="trend-count">3,752 постов</div>
+                </div>
+                <div class="trend-item">
+                    <div class="trend-category">Наука</div>
+                    <div class="trend-title">#ИскусственныйИнтеллект</div>
+                    <div class="trend-count">2,984 постов</div>
+                </div>
+                <div class="see-more">
+                    <a href="#">Показать больше</a>
+                </div>
+            </div>
+
+            <!-- Премиум-баннер -->
+            <div class="premium-banner">
+                <div class="premium-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="premium-info">
+                    <h3>OpenTalk Премиум</h3>
+                    <p>Получите доступ к эксклюзивным функциям</p>
+                    <button class="premium-btn">Подключить</button>
+                </div>
+            </div>
+
+            <!-- Рекомендуемые пользователи -->
+            <div class="suggested-users">
+                <h3>Кого читать</h3>
+                <div class="suggested-user-item">
+                    <div class="user-avatar">
+                        <img src="https://i.pravatar.cc/150?img=24" alt="Аватар пользователя">
+                    </div>
+                    <div class="user-info">
+                        <p class="username">Елена Козлова</p>
+                        <p class="user-handle">@elena_design</p>
+                    </div>
+                    <button class="follow-btn">Читать</button>
+                </div>
+                <div class="suggested-user-item">
+                    <div class="user-avatar">
+                        <img src="https://i.pravatar.cc/150?img=54" alt="Аватар пользователя">
+                    </div>
+                    <div class="user-info">
+                        <p class="username">Дмитрий Соколов</p>
+                        <p class="user-handle">@tech_dmitry</p>
+                    </div>
+                    <button class="follow-btn">Читать</button>
+                </div>
+                <div class="suggested-user-item">
+                    <div class="user-avatar">
+                        <img src="https://i.pravatar.cc/150?img=37" alt="Аватар пользователя">
+                    </div>
+                    <div class="user-info">
+                        <p class="username">Анна Морозова</p>
+                        <p class="user-handle">@anna_code</p>
+                    </div>
+                    <button class="follow-btn">Читать</button>
+                </div>
+                <div class="see-more">
+                    <a href="#">Показать больше</a>
+                </div>
+            </div>
+
+            <!-- Активные чаты (как в Discord/Telegram) -->
+            <div class="active-chats">
+                <h3>Активные чаты</h3>
+                <div class="chat-item">
+                    <div class="chat-avatar">
+                        <img src="https://i.pravatar.cc/150?img=15" alt="Аватар пользователя">
+                        <span class="status online"></span>
+                    </div>
+                    <div class="chat-info">
+                        <p class="chat-name">Ирина Васильева</p>
+                        <p class="last-message">Привет! Как дела с проектом?</p>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="chat-action-btn"><i class="fas fa-phone-alt"></i></button>
+                        <div class="chat-time">12:45</div>
+                    </div>
+                </div>
+                <div class="chat-item">
+                    <div class="chat-avatar">
+                        <img src="https://i.pravatar.cc/150?img=31" alt="Аватар пользователя">
+                        <span class="status online"></span>
+                    </div>
+                    <div class="chat-info">
+                        <p class="chat-name">Михаил Комаров</p>
+                        <p class="last-message">Посмотрел твой пост, круто!</p>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="chat-action-btn"><i class="fas fa-phone-alt"></i></button>
+                        <div class="chat-time">10:30</div>
+                    </div>
+                </div>
+                <div class="chat-item">
+                    <div class="chat-avatar">
+                        <img src="https://i.pravatar.cc/150?img=8" alt="Аватар пользователя">
+                        <span class="status away"></span>
+                    </div>
+                    <div class="chat-info">
+                        <p class="chat-name">Наталья Лебедева</p>
+                        <p class="last-message">Выслала тебе материалы</p>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="chat-action-btn"><i class="fas fa-phone-alt"></i></button>
+                        <div class="chat-time">Вчера</div>
+                    </div>
+                </div>
+                <div class="see-more">
+                    <a href="#">Все сообщения</a>
+                </div>
+            </div>
+
+            <!-- Активные голосовые каналы (как в Discord) -->
+            <div class="voice-channels">
+                <h3>Голосовые каналы</h3>
+                <div class="voice-channel-item">
+                    <div class="voice-channel-info">
+                        <i class="fas fa-volume-up"></i>
+                        <div class="voice-channel-details">
+                            <p class="voice-channel-name">Игровой чат</p>
+                            <p class="voice-channel-count">5 участников</p>
+                        </div>
+                    </div>
+                    <button class="join-voice-btn">Войти</button>
+                </div>
+                <div class="voice-channel-item">
+                    <div class="voice-channel-info">
+                        <i class="fas fa-volume-up"></i>
+                        <div class="voice-channel-details">
+                            <p class="voice-channel-name">Музыка</p>
+                            <p class="voice-channel-count">3 участника</p>
+                        </div>
+                    </div>
+                    <button class="join-voice-btn">Войти</button>
+                </div>
+                <div class="voice-channel-item">
+                    <div class="voice-channel-info">
+                        <i class="fas fa-volume-up"></i>
+                        <div class="voice-channel-details">
+                            <p class="voice-channel-name">Рабочее пространство</p>
+                            <p class="voice-channel-count">7 участников</p>
+                        </div>
+                    </div>
+                    <button class="join-voice-btn">Войти</button>
+                </div>
+                <div class="see-more">
+                    <a href="#">Все каналы</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно звонка (скрыто по умолчанию) -->
+    <div class="call-modal" id="call-modal">
+        <div class="call-container">
+            <div class="call-header">
+                <h3>Входящий звонок</h3>
+                <button class="close-call-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="caller-info">
+                <div class="caller-avatar">
+                    <img src="https://i.pravatar.cc/150?img=15" alt="Аватар звонящего">
+                </div>
+                <p class="caller-name">Ирина Васильева</p>
+                <p class="call-status">звонит...</p>
+            </div>
+            <div class="call-actions">
+                <button class="decline-call-btn"><i class="fas fa-phone-slash"></i></button>
+                <button class="accept-call-btn"><i class="fas fa-phone-alt"></i></button>
+                <button class="video-call-btn"><i class="fas fa-video"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для премиум подписки -->
+    <div class="premium-modal" id="premium-modal">
+        <div class="premium-container">
+            <div class="premium-header">
+                <h2>OpenTalk Премиум</h2>
+                <button class="close-premium-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="premium-content">
+                <div class="premium-hero">
+                    <i class="fas fa-crown premium-hero-icon"></i>
+                    <h3>Улучшите свой опыт с OpenTalk Премиум</h3>
+                </div>
+                <div class="premium-features">
+                    <div class="premium-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Без рекламы</p>
+                    </div>
+                    <div class="premium-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Увеличенный лимит сообщений</p>
+                    </div>
+                    <div class="premium-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <p>HD качество звонков и видеоконференций</p>
+                    </div>
+                    <div class="premium-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Загрузка файлов до 4 ГБ</p>
+                    </div>
+                    <div class="premium-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Эксклюзивные стикеры и эмодзи</p>
+                    </div>
+                    <div class="premium-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Приоритетная поддержка</p>
+                    </div>
+                </div>
+                <div class="premium-plans">
+                    <div class="premium-plan">
+                        <h4>Месячная подписка</h4>
+                        <p class="plan-price">199 ₽/мес</p>
+                        <button class="plan-select-btn">Выбрать</button>
+                    </div>
+                    <div class="premium-plan best-value">
+                        <div class="best-value-tag">Выгодно</div>
+                        <h4>Годовая подписка</h4>
+                        <p class="plan-price">1990 ₽/год</p>
+                        <p class="plan-save">Экономия 30%</p>
+                        <button class="plan-select-btn">Выбрать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

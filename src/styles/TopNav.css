@@ -1,0 +1,152 @@
+/* Стили для верхней панели навигации */
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 1px solid;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+
+.search-container {
+  position: relative;
+  flex: 1;
+  max-width: 600px;
+}
+
+.search-container svg,
+.search-container i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: inherit;
+  opacity: 0.6;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 10px 15px 10px 45px;
+  border-radius: 9999px;
+  border: none;
+  font-size: 0.95rem;
+  font-family: 'Montserrat', sans-serif;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.search-container input:focus {
+  outline: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-icon {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-speed);
+}
+
+/* Стили для светлой темы */
+.light-theme .btn-icon {
+  color: var(--light-primary);
+  background-color: transparent;
+}
+
+.light-theme .btn-icon:hover {
+  background-color: var(--light-hover);
+}
+
+/* Стили для темной темы */
+.dark-theme .btn-icon {
+  background-color: transparent;
+  color: var(--dark-primary);
+}
+
+.dark-theme .btn-icon:hover {
+  background-color: var(--dark-hover);
+}
+
+.notification-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--light-danger);
+  color: white;
+  font-size: 0.7rem;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.new-post-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: background-color var(--transition-speed);
+}
+
+/* Стили для светлой темы */
+.light-theme .top-nav {
+  background-color: var(--light-surface);
+  border-color: var(--light-border);
+}
+
+.light-theme .search-container input {
+  background-color: var(--light-hover);
+  color: var(--light-text-primary);
+}
+
+.light-theme .new-post-btn {
+  background-color: var(--light-primary);
+  color: white;
+}
+
+.light-theme .new-post-btn:hover {
+  background-color: var(--light-secondary);
+}
+
+.light-theme .notification-badge {
+  background-color: var(--light-danger);
+}
+
+/* Стили для темной темы */
+.dark-theme .top-nav {
+  background-color: var(--dark-surface);
+  border-color: var(--dark-border);
+}
+
+.dark-theme .search-container input {
+  background-color: var(--dark-hover);
+  color: var(--dark-text-primary);
+}
+
+.dark-theme .new-post-btn {
+  background-color: var(--dark-primary);
+  color: white;
+}
+
+.dark-theme .new-post-btn:hover {
+  background-color: var(--dark-secondary);
+}
+
+.dark-theme .notification-badge {
+  background-color: var(--dark-danger);
+} 

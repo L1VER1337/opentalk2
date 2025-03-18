@@ -1,0 +1,843 @@
+/* Стили для правой боковой панели */
+.right-sidebar {
+  height: 100vh;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: background-color var(--transition-speed), border-color var(--transition-speed);
+  position: sticky;
+  top: 0;
+}
+
+.trends-section,
+.suggested-users,
+.active-chats,
+.voice-channels {
+  border-radius: var(--border-radius-md);
+  padding: 15px;
+  transition: background-color var(--transition-speed), border-color var(--transition-speed);
+  box-shadow: var(--shadow-sm);
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.trends-list,
+.users-list,
+.chats-list,
+.voice-channels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Стили для премиум-баннера */
+.premium-banner {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(247, 223, 30, 0.2) 0%, rgba(184, 134, 11, 0.2) 100%);
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(247, 223, 30, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.premium-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.premium-icon {
+  font-size: 24px;
+  margin-right: 16px;
+  color: var(--light-premium);
+}
+
+.premium-info h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+  margin-top: 0;
+}
+
+.premium-info p {
+  font-size: 12px;
+  color: #E6D000;
+  opacity: 0.8;
+  margin-bottom: 8px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.premium-btn {
+  background-color: var(--light-premium);
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 12px;
+  transition: background-color var(--transition-speed);
+}
+
+.premium-btn:hover {
+  background-color: var(--light-premium-secondary);
+}
+
+.trend-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: transform 0.2s;
+  border-radius: var(--border-radius-sm);
+  padding: 8px;
+}
+
+.trend-item:hover {
+  transform: translateX(4px);
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.trend-category,
+.trend-posts {
+  font-size: 0.85rem;
+  color: var(--light-text-secondary);
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.trend-title {
+  font-weight: 600;
+  margin: 3px 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.trend-menu {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color var(--transition-speed);
+}
+
+.suggested-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  border-radius: var(--border-radius-sm);
+}
+
+.suggested-user:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  transform: translateX(4px);
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.suggested-user:hover .user-avatar img {
+  transform: scale(1.05);
+}
+
+.user-name {
+  font-weight: 600;
+  margin: 0;
+  font-size: 0.95rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.user-handle {
+  font-size: 0.85rem;
+  color: var(--light-text-secondary);
+  margin: 3px 0 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.follow-btn {
+  margin-left: auto;
+  padding: 6px 15px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: background-color var(--transition-speed), transform 0.2s;
+}
+
+.follow-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Стили для активных чатов */
+.chat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.chat-item:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  transform: translateX(4px);
+}
+
+.chat-avatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.chat-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.chat-item:hover .chat-avatar img {
+  transform: scale(1.05);
+}
+
+.status {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--light-surface);
+  bottom: 0;
+  right: 0;
+  transition: background-color var(--transition-speed);
+}
+
+.status.online {
+  background-color: var(--light-success);
+}
+
+.status.away {
+  background-color: var(--light-premium);
+}
+
+.chat-info {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.chat-name {
+  font-weight: 600;
+  margin: 0;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.last-message {
+  font-size: 0.8rem;
+  color: var(--light-text-secondary);
+  margin: 3px 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.chat-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.chat-action-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-speed);
+}
+
+.chat-action-btn:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.chat-time {
+  font-size: 0.7rem;
+  color: var(--light-text-secondary);
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Стили для голосовых каналов */
+.voice-channel-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.voice-channel-item:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.voice-channel-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.voice-channel-info svg {
+  color: var(--light-text-secondary);
+  font-size: 1.1rem;
+}
+
+.voice-channel-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.voice-channel-name {
+  font-weight: 600;
+  margin: 0;
+  font-size: 0.9rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.voice-channel-count {
+  font-size: 0.8rem;
+  color: var(--light-text-secondary);
+  margin: 3px 0 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.join-voice-btn {
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: background-color var(--transition-speed), transform 0.2s;
+}
+
+.join-voice-btn:hover {
+  transform: translateY(-2px);
+}
+
+.show-more {
+  padding: 8px 0;
+}
+
+.show-more a {
+  color: var(--light-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  transition: color 0.2s;
+}
+
+.show-more a:hover {
+  text-decoration: underline;
+}
+
+/* Модальное окно премиума */
+.premium-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+  backdrop-filter: blur(5px);
+}
+
+.premium-modal.active {
+  display: flex;
+}
+
+.premium-container {
+  width: 500px;
+  max-width: 90%;
+  background-color: var(--light-surface);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.3s ease-in-out;
+  position: relative;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.premium-header {
+  position: relative;
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #F7DF1E 0%, #B8860B 100%);
+  color: #333;
+}
+
+.premium-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.close-premium-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: background-color var(--transition-speed), transform 0.2s;
+  z-index: 10;
+}
+
+.close-premium-btn:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: rotate(90deg);
+}
+
+.close-premium-btn svg,
+.close-premium-btn i {
+  font-size: 16px;
+  color: #333;
+}
+
+.premium-content {
+  padding: 20px;
+}
+
+.premium-hero {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.premium-hero-icon {
+  font-size: 48px;
+  color: var(--light-premium);
+  margin-bottom: 16px;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.premium-hero h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+.premium-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.premium-feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s;
+}
+
+.premium-feature:hover {
+  transform: translateX(5px);
+}
+
+.premium-feature svg,
+.premium-feature i {
+  color: var(--light-premium);
+  font-size: 16px;
+  animation: fadeInScaleCheck 0.5s;
+}
+
+@keyframes fadeInScaleCheck {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.premium-feature p {
+  font-size: 14px;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.premium-plans {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.premium-plan {
+  position: relative;
+  border: 1px solid var(--light-border);
+  border-radius: var(--border-radius-md);
+  padding: 16px;
+  text-align: center;
+  transition: border-color var(--transition-speed), transform 0.3s, box-shadow 0.3s;
+}
+
+.premium-plan:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.premium-plan.best-value {
+  border: 2px solid var(--light-premium);
+}
+
+.best-value-tag {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--light-premium);
+  color: #333;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 12px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.premium-plan h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  margin-top: 6px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.plan-price {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  margin-top: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.plan-save {
+  font-size: 14px;
+  color: var(--light-success);
+  margin-bottom: 16px;
+  margin-top: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.plan-select-btn {
+  width: 100%;
+  padding: 8px 0;
+  background-color: var(--light-premium);
+  color: #333;
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  transition: background-color var(--transition-speed), transform 0.2s;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.plan-select-btn:hover {
+  background-color: var(--light-premium-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(247, 223, 30, 0.3);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  font-size: 0.75rem;
+  color: var(--light-text-secondary);
+  transition: color 0.2s;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.footer-links a:hover {
+  color: var(--light-primary);
+  text-decoration: underline;
+}
+
+.copyright {
+  font-size: 0.75rem;
+  color: var(--light-text-secondary);
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Стили для светлой темы */
+.light-theme .right-sidebar {
+  background-color: var(--light-background);
+  border-left: 1px solid var(--light-border);
+}
+
+.light-theme .trends-section,
+.light-theme .suggested-users,
+.light-theme .active-chats,
+.light-theme .voice-channels {
+  background-color: var(--light-surface);
+  border: 1px solid var(--light-border);
+}
+
+.light-theme .trend-category,
+.light-theme .trend-posts,
+.light-theme .user-handle,
+.light-theme .last-message,
+.light-theme .voice-channel-count,
+.light-theme .chat-time {
+  color: var(--light-text-secondary);
+}
+
+.light-theme .trend-item:hover,
+.light-theme .suggested-user:hover,
+.light-theme .chat-item:hover,
+.light-theme .voice-channel-item:hover {
+  background-color: var(--light-hover);
+}
+
+.light-theme .trend-menu:hover,
+.light-theme .chat-action-btn:hover {
+  background-color: var(--light-hover);
+}
+
+.light-theme .status.online {
+  background-color: var(--light-success);
+}
+
+.light-theme .status.away {
+  background-color: var(--light-premium);
+}
+
+.light-theme .status {
+  border-color: var(--light-surface);
+}
+
+.light-theme .follow-btn,
+.light-theme .join-voice-btn {
+  background-color: var(--light-primary);
+  color: white;
+}
+
+.light-theme .follow-btn:hover,
+.light-theme .join-voice-btn:hover {
+  background-color: var(--light-secondary);
+}
+
+.light-theme .premium-container {
+  background-color: #FFFFFF;
+  border: 1px solid #E0E0E0;
+}
+
+.light-theme .show-more a {
+  color: var(--light-primary);
+}
+
+.light-theme .footer-links a,
+.light-theme .copyright {
+  color: var(--light-text-secondary);
+}
+
+.light-theme .footer-links a:hover {
+  color: var(--light-primary);
+}
+
+.light-theme .premium-feature svg,
+.light-theme .premium-feature i {
+  color: var(--light-premium);
+}
+
+/* Стили для темной темы */
+.dark-theme .right-sidebar {
+  background-color: var(--dark-background);
+  border-left: 1px solid var(--dark-border);
+}
+
+.dark-theme .trends-section,
+.dark-theme .suggested-users,
+.dark-theme .active-chats,
+.dark-theme .voice-channels {
+  background-color: var(--dark-surface);
+  border: 1px solid var(--dark-border);
+}
+
+.dark-theme .trend-category,
+.dark-theme .trend-posts,
+.dark-theme .user-handle,
+.dark-theme .last-message,
+.dark-theme .voice-channel-count,
+.dark-theme .chat-time,
+.dark-theme .voice-channel-info svg {
+  color: var(--dark-text-secondary);
+}
+
+.dark-theme .trend-item:hover,
+.dark-theme .suggested-user:hover,
+.dark-theme .chat-item:hover,
+.dark-theme .voice-channel-item:hover {
+  background-color: var(--dark-hover);
+}
+
+.dark-theme .trend-menu:hover,
+.dark-theme .chat-action-btn:hover {
+  background-color: var(--dark-hover);
+}
+
+.dark-theme .status.online {
+  background-color: var(--dark-success);
+}
+
+.dark-theme .status.away {
+  background-color: var(--dark-premium);
+}
+
+.dark-theme .status {
+  border-color: var(--dark-surface);
+}
+
+.dark-theme .follow-btn,
+.dark-theme .join-voice-btn {
+  background-color: var(--dark-primary);
+  color: white;
+}
+
+.dark-theme .follow-btn:hover,
+.dark-theme .join-voice-btn:hover {
+  background-color: var(--dark-secondary);
+}
+
+.dark-theme .premium-icon {
+  color: var(--dark-premium);
+}
+
+.dark-theme .premium-btn {
+  background-color: var(--dark-premium);
+}
+
+.dark-theme .premium-btn:hover {
+  background-color: var(--dark-premium-secondary);
+}
+
+.dark-theme .premium-container {
+  background-color: #242526;
+  border: 1px solid #3A3B3C;
+}
+
+.dark-theme .premium-feature svg,
+.dark-theme .premium-feature i {
+  color: var(--dark-premium);
+}
+
+.dark-theme .plan-save {
+  color: var(--dark-success);
+}
+
+.dark-theme .plan-select-btn {
+  background-color: var(--dark-premium);
+}
+
+.dark-theme .plan-select-btn:hover {
+  background-color: var(--dark-premium-secondary);
+}
+
+.dark-theme .show-more a {
+  color: var(--dark-primary);
+}
+
+.dark-theme .footer-links a,
+.dark-theme .copyright {
+  color: var(--dark-text-secondary);
+}
+
+.dark-theme .footer-links a:hover {
+  color: var(--dark-primary);
+}
+
+.dark-theme .premium-info p {
+  opacity: 0.7;
+} 

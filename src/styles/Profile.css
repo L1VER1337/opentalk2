@@ -1,0 +1,529 @@
+/* Общие стили для страницы профиля */
+.profile-container {
+  max-width: 100%;
+  overflow-x: hidden;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Загрузка профиля */
+.loading-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  color: var(--light-text-secondary);
+}
+
+.dark-theme .loading-profile {
+  color: var(--dark-text-secondary);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--light-primary);
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 15px;
+}
+
+.dark-theme .spinner {
+  border-color: rgba(255, 255, 255, 0.1);
+  border-top-color: var(--dark-primary);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Шапка профиля */
+.profile-header {
+  margin-bottom: 20px;
+}
+
+.cover-photo {
+  position: relative;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--border-radius-md);
+  margin-bottom: 30px;
+}
+
+@media (min-width: 768px) {
+  .cover-photo {
+    height: 300px;
+    margin-bottom: 20px;
+  }
+}
+
+.edit-cover-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.edit-cover-button:hover {
+  background-color: var(--light-primary);
+  color: white;
+}
+
+.dark-theme .edit-cover-button {
+  background-color: rgba(36, 37, 38, 0.9);
+  color: var(--dark-text-primary);
+}
+
+.dark-theme .edit-cover-button:hover {
+  background-color: var(--dark-primary);
+  color: white;
+}
+
+/* Информация профиля и аватар */
+.profile-info {
+  padding: 0 15px;
+  position: relative;
+}
+
+.profile-avatar-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-top: -60px;
+  margin-bottom: 15px;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid var(--light-surface);
+  object-fit: cover;
+  background-color: var(--light-surface);
+  box-shadow: var(--shadow-md);
+}
+
+.dark-theme .profile-avatar {
+  border-color: var(--dark-surface);
+  background-color: var(--dark-surface);
+}
+
+.edit-avatar-button {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: var(--light-surface);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid var(--light-border);
+}
+
+.edit-avatar-button:hover {
+  background-color: var(--light-primary);
+  color: white;
+  border-color: var(--light-primary);
+}
+
+.dark-theme .edit-avatar-button {
+  background-color: var(--dark-surface);
+  color: var(--dark-text-primary);
+  border-color: var(--dark-border);
+}
+
+.dark-theme .edit-avatar-button:hover {
+  background-color: var(--dark-primary);
+  color: white;
+  border-color: var(--dark-primary);
+}
+
+/* Индикатор статуса */
+.status-indicator {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--light-success);
+  border: 3px solid var(--light-surface);
+  z-index: 1;
+}
+
+.status-online {
+  background-color: #4CAF50; /* Зеленый для онлайн */
+}
+
+.status-away {
+  background-color: #FFC107; /* Желтый для отошел */
+}
+
+.status-busy, .status-dnd {
+  background-color: #F44336; /* Красный для не беспокоить */
+}
+
+.status-offline {
+  background-color: #9E9E9E; /* Серый для оффлайн */
+}
+
+.dark-theme .status-indicator {
+  border-color: var(--dark-surface);
+}
+
+/* Действия профиля */
+.profile-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.edit-profile-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: var(--light-primary);
+  color: white;
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.edit-profile-button:hover {
+  background-color: var(--light-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.dark-theme .edit-profile-button {
+  background-color: var(--dark-primary);
+}
+
+.dark-theme .edit-profile-button:hover {
+  background-color: var(--dark-secondary);
+}
+
+.user-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.follow-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: var(--light-primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.follow-button.following {
+  background-color: var(--light-surface);
+  color: var(--light-text-primary);
+  border: 1px solid var(--light-border);
+}
+
+.follow-button:hover {
+  background-color: var(--light-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.follow-button.following:hover {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: var(--light-danger);
+  border-color: var(--light-danger);
+}
+
+.dark-theme .follow-button {
+  background-color: var(--dark-primary);
+}
+
+.dark-theme .follow-button.following {
+  background-color: var(--dark-surface);
+  color: var(--dark-text-primary);
+  border-color: var(--dark-border);
+}
+
+.dark-theme .follow-button:hover {
+  background-color: var(--dark-secondary);
+}
+
+.dark-theme .follow-button.following:hover {
+  background-color: rgba(244, 67, 54, 0.2);
+  color: var(--dark-danger);
+  border-color: var(--dark-danger);
+}
+
+.notification-button, 
+.more-options-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--light-surface);
+  color: var(--light-text-primary);
+  border: 1px solid var(--light-border);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.notification-button:hover, 
+.more-options-button:hover {
+  background-color: var(--light-hover);
+}
+
+.notification-button.active {
+  background-color: var(--light-primary);
+  color: white;
+  border-color: var(--light-primary);
+}
+
+.dark-theme .notification-button, 
+.dark-theme .more-options-button {
+  background-color: var(--dark-surface);
+  color: var(--dark-text-primary);
+  border-color: var(--dark-border);
+}
+
+.dark-theme .notification-button:hover, 
+.dark-theme .more-options-button:hover {
+  background-color: var(--dark-hover);
+}
+
+.dark-theme .notification-button.active {
+  background-color: var(--dark-primary);
+  color: white;
+  border-color: var(--dark-primary);
+}
+
+/* Детали профиля */
+.profile-details {
+  margin-bottom: 30px;
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: var(--light-text-primary);
+}
+
+.dark-theme .profile-name {
+  color: var(--dark-text-primary);
+}
+
+.profile-username {
+  font-size: 16px;
+  color: var(--light-text-secondary);
+  margin-bottom: 15px;
+}
+
+.dark-theme .profile-username {
+  color: var(--dark-text-secondary);
+}
+
+.profile-bio {
+  font-size: 16px;
+  color: var(--light-text-primary);
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.dark-theme .profile-bio {
+  color: var(--dark-text-primary);
+}
+
+.profile-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: var(--light-text-secondary);
+}
+
+.dark-theme .profile-meta {
+  color: var(--dark-text-secondary);
+}
+
+.profile-meta svg {
+  margin-right: 5px;
+}
+
+.profile-location,
+.profile-website,
+.profile-join-date {
+  display: flex;
+  align-items: center;
+}
+
+.profile-website a {
+  color: var(--light-primary);
+  text-decoration: none;
+}
+
+.profile-website a:hover {
+  text-decoration: underline;
+}
+
+.dark-theme .profile-website a {
+  color: var(--dark-primary);
+}
+
+/* Статистика профиля */
+.profile-stats {
+  display: flex;
+  gap: 30px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--light-text-primary);
+}
+
+.dark-theme .stat-value {
+  color: var(--dark-text-primary);
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--light-text-secondary);
+}
+
+.dark-theme .stat-label {
+  color: var(--dark-text-secondary);
+}
+
+/* Вкладки профиля */
+.profile-tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--light-border);
+}
+
+.dark-theme .profile-tabs {
+  border-color: var(--dark-border);
+}
+
+.tab-button {
+  padding: 15px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--light-text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.tab-button:hover {
+  color: var(--light-primary);
+}
+
+.tab-button.active {
+  color: var(--light-primary);
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--light-primary);
+  border-radius: 3px 3px 0 0;
+}
+
+.dark-theme .tab-button {
+  color: var(--dark-text-secondary);
+}
+
+.dark-theme .tab-button:hover {
+  color: var(--dark-primary);
+}
+
+.dark-theme .tab-button.active {
+  color: var(--dark-primary);
+}
+
+.dark-theme .tab-button.active::after {
+  background-color: var(--dark-primary);
+}
+
+/* Контент профиля */
+.profile-content-area {
+  min-height: 300px;
+}
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.no-posts-message,
+.media-container,
+.likes-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: var(--light-text-secondary);
+  background-color: var(--light-surface);
+  border-radius: var(--border-radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.dark-theme .no-posts-message,
+.dark-theme .media-container,
+.dark-theme .likes-container {
+  color: var(--dark-text-secondary);
+  background-color: var(--dark-surface);
+}
+
+/* Анимация */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+} 
