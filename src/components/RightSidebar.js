@@ -1,58 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsis, faCrown, faPhoneAlt, faVolumeUp, faTimes, faCheckCircle, faCircle, faMoon, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faCrown, faArrowRight, faUsers, faBookmark, faCalendarAlt 
+} from '@fortawesome/free-solid-svg-icons';
 import '../styles/RightSidebar.css';
 import AuthContext from '../context/AuthContext';
 
 const RightSidebar = () => {
-  const { user } = useContext(AuthContext);
-
-  // Данные для трендов
-  const trends = [
-    { id: 1, category: 'Технологии', title: '#ReactJS', posts: '12.7K постов' },
-    { id: 2, category: 'Россия', title: '#МосковскийФестиваль', posts: '8.2K постов' },
-    { id: 3, category: 'Спорт', title: 'Лига Чемпионов', posts: '32K постов' },
-    { id: 4, category: 'Бизнес', title: '#Стартапы', posts: '5.1K постов' },
-    { id: 5, category: 'Развлечения', title: '#НовыйСериал', posts: '18.3K постов' }
-  ];
-
-  // Данные для рекомендуемых пользователей
-  const suggestedUsers = [
-    { id: 1, name: 'Елена Соколова', handle: '@elena_design', avatar: 'https://i.pravatar.cc/150?img=5' },
-    { id: 2, name: 'Дмитрий Волков', handle: '@dmitry_tech', avatar: 'https://i.pravatar.cc/150?img=8' },
-    { id: 3, name: 'Анна Новикова', handle: '@anna_photo', avatar: 'https://i.pravatar.cc/150?img=9' }
-  ];
-
-  // Данные для активных чатов
-  const activeChats = [
-    { id: 1, name: 'Ирина Васильева', message: 'Привет! Как дела с проектом?', time: '12:45', avatar: 'https://i.pravatar.cc/150?img=15', status: 'online' },
-    { id: 2, name: 'Михаил Комаров', message: 'Посмотрел твой пост, круто!', time: '10:30', avatar: 'https://i.pravatar.cc/150?img=31', status: 'online' },
-    { id: 3, name: 'Наталья Лебедева', message: 'Выслала тебе материалы', time: 'Вчера', avatar: 'https://i.pravatar.cc/150?img=8', status: 'away' }
-  ];
-
-  // Данные для голосовых каналов
-  const voiceChannels = [
-    { id: 1, name: 'Игровой чат', users: 5 },
-    { id: 2, name: 'Музыка', users: 3 },
-    { id: 3, name: 'Рабочее пространство', users: 7 }
-  ];
-
-  // Функция для получения иконки статуса
-  const getStatusIcon = (status) => {
-    switch(status) {
-      case 'online':
-        return <FontAwesomeIcon icon={faCircle} className="status-icon online" />;
-      case 'away':
-        return <FontAwesomeIcon icon={faMoon} className="status-icon away" />;
-      case 'do_not_disturb':
-        return <FontAwesomeIcon icon={faExclamationCircle} className="status-icon do_not_disturb" />;
-      case 'offline':
-      default:
-        return <FontAwesomeIcon icon={faCircle} className="status-icon offline" />;
-    }
-  };
-
-  // Функция для открытия модального окна премиум
   const openPremiumModal = () => {
     // Создаем модальное окно
     const modal = document.createElement('div');
@@ -99,13 +54,13 @@ const RightSidebar = () => {
           <div class="premium-plans">
             <div class="premium-plan">
               <h4>Месячная подписка</h4>
-              <p class="plan-price">599 ₽/мес</p>
+              <p class="plan-price">199 ₽/мес</p>
               <button class="plan-select-btn">Выбрать</button>
             </div>
             <div class="premium-plan best-value">
               <div class="best-value-tag">Выгодно</div>
               <h4>Годовая подписка</h4>
-              <p class="plan-price">4990 ₽/год</p>
+              <p class="plan-price">1990 ₽/год</p>
               <p class="plan-save">Экономия 30%</p>
               <button class="plan-select-btn">Выбрать</button>
             </div>
@@ -190,126 +145,74 @@ const RightSidebar = () => {
 
   return (
     <div className="right-sidebar">
-      {/* Премиум баннер */}
-      <div className="premium-banner" onClick={openPremiumModal}>
-        <div className="premium-icon">
-          <FontAwesomeIcon icon={faCrown} />
-        </div>
-        <div className="premium-info">
-          <h3>OpenTalk Премиум</h3>
-          <p>Получите доступ к эксклюзивным функциям</p>
-          <button className="premium-btn">Подключить</button>
+      {/* Премиум секция */}
+      <div className="premium-section">
+        <div className="premium-card">
+          <div className="premium-card-title">
+            <FontAwesomeIcon icon={faCrown} />
+            <span>OpenTalk Премиум</span>
+          </div>
+          <div className="premium-card-content">
+            Откройте расширенные возможности и устраните ограничения с премиум-подпиской
+          </div>
+          <button className="premium-card-btn" onClick={openPremiumModal}>
+            Активировать <FontAwesomeIcon icon={faArrowRight} />
+          </button>
         </div>
       </div>
-      
-      {/* Секция трендов */}
-      <div className="trends-section">
-        <h3>Актуальные темы</h3>
-        <div className="trends-list">
-          {trends.map(trend => (
-            <div key={trend.id} className="trend-item">
-              <div className="trend-info">
-                <p className="trend-category">{trend.category}</p>
-                <p className="trend-title">{trend.title}</p>
-                <p className="trend-posts">{trend.posts}</p>
-              </div>
-              <div className="trend-menu">
-                <FontAwesomeIcon icon={faEllipsis} />
-              </div>
-            </div>
-          ))}
-          <div className="show-more">
-            <a href="#">Показать больше</a>
+
+      {/* Секция контактов или другие элементы */}
+      <div className="section-title">Популярные сообщества</div>
+      <div className="community-list">
+        <div className="community-item">
+          <div className="community-icon">
+            <FontAwesomeIcon icon={faUsers} />
+          </div>
+          <div className="community-info">
+            <div className="community-name">Технологии</div>
+            <div className="community-meta">1.2K участников</div>
+          </div>
+        </div>
+        <div className="community-item">
+          <div className="community-icon">
+            <FontAwesomeIcon icon={faUsers} />
+          </div>
+          <div className="community-info">
+            <div className="community-name">Дизайн и искусство</div>
+            <div className="community-meta">945 участников</div>
           </div>
         </div>
       </div>
 
-      {/* Секция рекомендуемых пользователей */}
-      <div className="suggested-users">
-        <h3>Рекомендуемые пользователи</h3>
-        <div className="users-list">
-          {suggestedUsers.map(user => (
-            <div key={user.id} className="suggested-user">
-              <div className="user-avatar">
-                <img src={user.avatar} alt={user.name} />
-              </div>
-              <div className="user-info">
-                <p className="user-name">{user.name}</p>
-                <p className="user-handle">{user.handle}</p>
-              </div>
-              <button className="follow-btn">Читать</button>
-            </div>
-          ))}
-          <div className="show-more">
-            <a href="#">Показать больше</a>
+      {/* Закладки */}
+      <div className="section-title">Мои закладки</div>
+      <div className="bookmarks-list">
+        <div className="bookmark-item">
+          <div className="bookmark-icon">
+            <FontAwesomeIcon icon={faBookmark} />
           </div>
-        </div>
-      </div>
-      
-      {/* Активные чаты */}
-      <div className="active-chats">
-        <h3>Активные чаты</h3>
-        <div className="chats-list">
-          {activeChats.map(chat => (
-            <div key={chat.id} className="chat-item">
-              <div className="chat-avatar">
-                <img src={chat.avatar} alt={chat.name} />
-                <span className={`status ${chat.status}`}></span>
-              </div>
-              <div className="chat-info">
-                <p className="chat-name">
-                  {chat.name}
-                  {getStatusIcon(chat.status)}
-                </p>
-                <p className="last-message">{chat.message}</p>
-              </div>
-              <div className="chat-actions">
-                <button className="chat-action-btn">
-                  <FontAwesomeIcon icon={faPhoneAlt} />
-                </button>
-                <div className="chat-time">{chat.time}</div>
-              </div>
-            </div>
-          ))}
-          <div className="show-more">
-            <a href="#">Все сообщения</a>
-          </div>
-        </div>
-      </div>
-      
-      {/* Голосовые каналы */}
-      <div className="voice-channels">
-        <h3>Голосовые каналы</h3>
-        <div className="voice-channels-list">
-          {voiceChannels.map(channel => (
-            <div key={channel.id} className="voice-channel-item">
-              <div className="voice-channel-info">
-                <FontAwesomeIcon icon={faVolumeUp} />
-                <div className="voice-channel-details">
-                  <p className="voice-channel-name">{channel.name}</p>
-                  <p className="voice-channel-count">{channel.users} участников</p>
-                </div>
-              </div>
-              <button className="join-voice-btn">Войти</button>
-            </div>
-          ))}
-          <div className="show-more">
-            <a href="#">Все каналы</a>
+          <div className="bookmark-info">
+            <div className="bookmark-name">Интересные новости</div>
+            <div className="bookmark-meta">5 публикаций</div>
           </div>
         </div>
       </div>
 
-      {/* Футер */}
-      <div className="sidebar-footer">
-        <div className="footer-links">
-          <a href="#">Условия использования</a>
-          <a href="#">Политика конфиденциальности</a>
-          <a href="#">Правила сообщества</a>
-          <a href="#">О нас</a>
-          <a href="#">Помощь</a>
+      {/* Предстоящие события */}
+      <div className="section-title">Предстоящие события</div>
+      <div className="events-list">
+        <div className="event-item">
+          <div className="event-icon">
+            <FontAwesomeIcon icon={faCalendarAlt} />
+          </div>
+          <div className="event-info">
+            <div className="event-name">Встреча разработчиков</div>
+            <div className="event-meta">27 ноября, 19:00</div>
+          </div>
         </div>
-        <p className="copyright">© 2025 OpenTalk</p>
       </div>
+
+      {/* Дополнительные разделы можно добавлять по необходимости */}
     </div>
   );
 };

@@ -1,11 +1,60 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
-  faEnvelope, faLock, faEye, faEyeSlash 
+  faEnvelope, faLock, faEye, faEyeSlash, faSun, faMoon 
 } from '@fortawesome/free-solid-svg-icons';
 import AuthContext from '../../context/AuthContext';
 import '../../styles/AuthPages.css';
+
+const ThemeSwitcher = () => {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  
+  useEffect(() => {
+    // Проверяем текущую тему при монтировании компонента
+    const darkModePreferred = localStorage.getItem('darkMode') === 'true';
+    setIsDarkTheme(darkModePreferred);
+    
+    if (darkModePreferred) {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+  }, []);
+  
+  const toggleTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+    
+    if (!isDarkTheme) {
+      document.body.classList.add('dark-theme');
+      localStorage.setItem('darkMode', 'true');
+    } else {
+      document.body.classList.remove('dark-theme');
+      localStorage.setItem('darkMode', 'false');
+    }
+  };
+  
+  return (
+    <div className="theme-switcher">
+      <div className="theme-title">Тема:</div>
+      <div className="theme-label">
+        <FontAwesomeIcon icon={faSun} />
+      </div>
+      <label className="theme-toggle">
+        <input 
+          type="checkbox" 
+          checked={isDarkTheme} 
+          onChange={toggleTheme} 
+        />
+        <span className="toggle-slider"></span>
+      </label>
+      <div className="theme-label">
+        <FontAwesomeIcon icon={faMoon} />
+      </div>
+    </div>
+  );
+};
+
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -57,7 +106,7 @@ const Login = () => {
           <h2>Вход в OpenTalk</h2>
           <p>Добро пожаловать! Войдите, чтобы продолжить.</p>
         </div>
-
+        <ThemeSwitcher />
         {error && (
           <div className="error-message">
             {error}

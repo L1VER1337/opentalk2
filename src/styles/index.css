@@ -1,21 +1,25 @@
 /* Основные переменные и настройки */
 :root {
   /* Цвета светлой темы */
-  --light-primary: #73B2C0;
-  --light-secondary: #5A9CAA;
+  --light-primary: #fd8a82;
+  --light-secondary: #fd927a;
   --light-background: #F8F9FA;
   --light-surface: #FFFFFF;
-  --light-accent: #5A9CAA;
-  --light-text-primary: #2a2a2a;
-  --light-text-secondary: #666666;
-  --light-border: #D9CBCB;
-  --light-hover: #EDF2F4;
-  --light-premium: #F7DF1E;
-  --light-premium-secondary: #E6D000;
-  --light-success: #4CAF50;
-  --light-danger: #F44336;
-  --light-scrollbar-thumb: #CCCCCC;
-  --light-scrollbar-track: #F1F1F1;
+  --light-accent: #fd7f6c;
+  --light-text-primary: #9a6662;
+  --light-text-secondary: #9a6662;
+  --light-border: #e6c8c8;
+  --light-hover: #b0a8a7;
+  --light-premium: #E6B800;
+  --light-premium-secondary: #D4A500;
+  --light-success: #55d45a;
+  --light-danger: #ff4b3e;
+  --light-warning: #FFC107;
+  --light-scrollbar-thumb: #d5d5d5;
+  --light-scrollbar-track: #f5f5f5;
+  --light-premium-banner: linear-gradient(90deg, #E6B800, #FFD700, #E6B800);
+  --light-premium-text: #5D4A0A;
+  --light-premium-glow: rgba(230, 184, 0, 0.35);
 
   /* Цвета темной темы */
   --dark-primary: #D061EC;
@@ -27,12 +31,16 @@
   --dark-text-secondary: #B0B3B8;
   --dark-border: #3A3B3C;
   --dark-hover: #3A3B3C;
-  --dark-premium: #F7DF1E;
-  --dark-premium-secondary: #E6D000;
+  --dark-premium: #FFD700;
+  --dark-premium-secondary: #E6C200;
   --dark-success: #4CAF50;
   --dark-danger: #F44336;
+  --dark-warning: #FFC107;
   --dark-scrollbar-thumb: #3A3B3C;
   --dark-scrollbar-track: #18191A;
+  --dark-premium-banner: linear-gradient(90deg, #FFD700, #FFF176, #FFD700);
+  --dark-premium-text: #c1940e;
+  --dark-premium-glow: rgba(255, 215, 0, 0.45);
 
   /* Общие переменные */
   --border-radius-sm: 4px;

@@ -1,60 +1,112 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faArrowLeft, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faEnvelope, faArrowLeft, faSun, faMoon 
+} from '@fortawesome/free-solid-svg-icons';
 import '../../styles/AuthPages.css';
+
+// Компонент переключателя темы
+const ThemeSwitcher = () => {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  
+  useEffect(() => {
+    // Проверяем текущую тему при монтировании компонента
+    const darkModePreferred = localStorage.getItem('darkMode') === 'true';
+    setIsDarkTheme(darkModePreferred);
+    
+    if (darkModePreferred) {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+  }, []);
+  
+  const toggleTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+    
+    if (!isDarkTheme) {
+      document.body.classList.add('dark-theme');
+      localStorage.setItem('darkMode', 'true');
+    } else {
+      document.body.classList.remove('dark-theme');
+      localStorage.setItem('darkMode', 'false');
+    }
+  };
+  
+  return (
+    <div className="theme-switcher">
+      <div className="theme-title">Тема:</div>
+      <div className="theme-label">
+        <FontAwesomeIcon icon={faSun} />
+      </div>
+      <label className="theme-toggle">
+        <input 
+          type="checkbox" 
+          checked={isDarkTheme} 
+          onChange={toggleTheme} 
+        />
+        <span className="toggle-slider"></span>
+      </label>
+      <div className="theme-label">
+        <FontAwesomeIcon icon={faMoon} />
+      </div>
+    </div>
+  );
+};
 
 const ResetPassword = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState(null);
-
-  const handleChange = (e) => {
-    setEmail(e.target.value);
-  };
-
+  const [error, setError] = useState('');
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!email) {
-      setError('Пожалуйста, введите электронную почту');
+    if (!email.trim()) {
+      setError('Пожалуйста, введите ваш email');
       return;
     }
     
     setIsSubmitting(true);
-    setError(null);
+    setError('');
     
     try {
-      // Здесь будет логика отправки запроса на сброс пароля
-      // Имитация задержки запроса
+      // Здесь будет вызов API для сброса пароля
+      // Имитируем API-вызов с задержкой
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       setIsSubmitted(true);
-    } catch (err) {
-      setError('Произошла ошибка при отправке запроса на сброс пароля. Пожалуйста, попробуйте снова.');
-      console.error('Reset password error:', err);
+    } catch (error) {
+      console.error('Ошибка при отправке запроса:', error);
+      setError('Произошла ошибка при отправке запроса. Пожалуйста, попробуйте позже.');
     } finally {
       setIsSubmitting(false);
     }
   };
-
+  
   return (
     <div className="auth-container">
+      <div className="bg-circle bg-circle-1"></div>
+      <div className="bg-circle bg-circle-2"></div>
+      <div className="bg-circle bg-circle-3"></div>
+      <div className="wave"></div>
       <div className="auth-card">
+        <div className="auth-logo">
+          <h1>OpenTalk</h1>
+        </div>
+        <ThemeSwitcher />
+        
         {!isSubmitted ? (
           <>
-            <div className="auth-header">
-              <h2>Сброс пароля</h2>
-              <p>Введите адрес электронной почты, связанный с вашей учетной записью</p>
-            </div>
-
-            {error && (
-              <div className="error-message">
-                {error}
-              </div>
-            )}
-
+            <h2 className="auth-title">Восстановление пароля</h2>
+            <p className="auth-description">
+              Введите email, указанный при регистрации, и мы отправим вам инструкции по сбросу пароля.
+            </p>
+            
+            {error && <div className="auth-error">{error}</div>}
+            
             <form className="auth-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <div className="input-icon-wrapper">
@@ -62,47 +114,39 @@ const ResetPassword = () => {
                   <input
                     type="email"
                     id="email"
-                    name="email"
-                    placeholder="Электронная почта"
+                    placeholder="Ваш email"
                     value={email}
-                    onChange={handleChange}
-                    required
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
-
+              
               <button 
                 type="submit" 
-                className="btn-primary" 
+                className="auth-submit-btn" 
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Отправка...' : 'Отправить ссылку для сброса пароля'}
+                {isSubmitting ? 'Отправка...' : 'Отправить инструкции'}
               </button>
             </form>
-
-            <div className="auth-footer">
-              <p>
-                <Link to="/auth/login" className="back-link">
-                  <FontAwesomeIcon icon={faArrowLeft} /> Вернуться ко входу
-                </Link>
-              </p>
-            </div>
+            
+            <Link to="/auth/login" className="back-link">
+              <FontAwesomeIcon icon={faArrowLeft} />
+              Вернуться к странице входа
+            </Link>
           </>
         ) : (
           <div className="success-message">
-            <FontAwesomeIcon icon={faCheck} className="success-icon" />
-            <h2>Ссылка для сброса пароля отправлена</h2>
+            <div className="success-icon">✓</div>
+            <h2>Проверьте свою почту</h2>
             <p>
-              Мы отправили инструкции по сбросу пароля на адрес {email}. 
-              Пожалуйста, проверьте свою электронную почту.
+              Мы отправили инструкции по сбросу пароля на <strong>{email}</strong>. 
+              Если вы не получили письмо, проверьте папку "Спам" или попробуйте снова.
             </p>
-            <div className="auth-footer">
-              <p>
-                <Link to="/auth/login" className="btn-primary">
-                  Вернуться ко входу
-                </Link>
-              </p>
-            </div>
+            <Link to="/auth/login" className="auth-submit-btn">
+              Вернуться к входу
+            </Link>
           </div>
         )}
       </div>

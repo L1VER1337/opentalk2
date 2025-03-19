@@ -1,14 +1,103 @@
 /* Стили для правой боковой панели */
 .right-sidebar {
+  width: 280px;
   height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
   padding: 15px;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  transition: background-color var(--transition-speed), border-color var(--transition-speed);
-  position: sticky;
-  top: 0;
+  overflow-y: auto;
+  overflow-x: visible; /* Важно для предотвращения обрезания содержимого */
+  transition: background-color var(--transition-speed);
+  z-index: 100;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Исправление для контейнера премиум-секции */
+.right-sidebar .premium-section {
+  position: relative;
+  width: 100%;
+  margin: 10px 0;
+  padding: 0;
+  overflow: visible; /* Предотвращает обрезание эффектов */
+}
+
+/* Стили для премиум-карточки в правом сайдбаре */
+.right-sidebar .premium-card {
+  background: linear-gradient(135deg, rgba(230, 184, 0, 0.15) 0%, rgba(212, 165, 0, 0.08) 100%);
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(230, 184, 0, 0.35);
+  padding: 15px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(230, 184, 0, 0.15);
+  width: 100%;
+  transition: all 0.3s ease;
+  z-index: 1;
+  overflow: visible; /* Предотвращает обрезание эффектов */
+}
+
+/* Декоративный эффект для премиум-карточки */
+.right-sidebar .premium-card::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 40px;
+  height: 40px;
+  background: rgba(230, 184, 0, 0.3);
+  border-radius: 50%;
+  filter: blur(10px);
+  opacity: 0.7;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.right-sidebar .premium-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(230, 184, 0, 0.25);
+}
+
+.right-sidebar .premium-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--light-premium-text);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.right-sidebar .premium-card-title svg {
+  color: var(--light-premium);
+  filter: drop-shadow(0 0 2px var(--light-premium-glow));
+}
+
+.right-sidebar .premium-card-content {
+  font-size: 13px;
+  color: var(--light-text-secondary);
+  margin-bottom: 10px;
+}
+
+.right-sidebar .premium-card-btn {
+  background: var(--light-premium-banner);
+  color: var(--light-premium-text);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: var(--border-radius-md);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
+
+.right-sidebar .premium-card-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(230, 184, 0, 0.25);
 }
 
 .trends-section,
@@ -42,11 +131,20 @@ h3 {
   display: flex;
   align-items: center;
   padding: 16px;
-  background: linear-gradient(135deg, rgba(247, 223, 30, 0.2) 0%, rgba(184, 134, 11, 0.2) 100%);
   border-radius: var(--border-radius-md);
-  border: 1px solid rgba(247, 223, 30, 0.3);
+  border: 1px solid;
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
+}
+
+.light-theme .premium-banner {
+  background: var(--light-premium-banner);
+  border-color: rgba(247, 223, 30, 0.3);
+}
+
+.dark-theme .premium-banner {
+  background: var(--dark-premium-banner);
+  border-color: rgba(247, 223, 30, 0.2);
 }
 
 .premium-banner:hover {
@@ -57,7 +155,14 @@ h3 {
 .premium-icon {
   font-size: 24px;
   margin-right: 16px;
+}
+
+.light-theme .premium-icon {
   color: var(--light-premium);
+}
+
+.dark-theme .premium-icon {
+  color: var(--dark-premium);
 }
 
 .premium-info h3 {
@@ -68,15 +173,20 @@ h3 {
 
 .premium-info p {
   font-size: 12px;
-  color: #E6D000;
   opacity: 0.8;
   margin-bottom: 8px;
   font-family: 'Montserrat', sans-serif;
 }
 
+.light-theme .premium-info p {
+  color: var(--light-premium-text);
+}
+
+.dark-theme .premium-info p {
+  color: var(--dark-premium-text);
+}
+
 .premium-btn {
-  background-color: var(--light-premium);
-  color: #333;
   padding: 6px 12px;
   border-radius: 20px;
   font-weight: 600;
@@ -84,8 +194,22 @@ h3 {
   transition: background-color var(--transition-speed);
 }
 
+.light-theme .premium-btn {
+  background-color: var(--light-premium);
+  color: var(--light-premium-text);
+}
+
+.dark-theme .premium-btn {
+  background-color: var(--dark-premium);
+  color: var(--dark-premium-text);
+}
+
 .premium-btn:hover {
   background-color: var(--light-premium-secondary);
+}
+
+.dark-theme .premium-btn:hover {
+  background-color: var(--dark-premium-secondary);
 }
 
 .trend-item {
@@ -734,7 +858,7 @@ h3 {
 
 /* Стили для темной темы */
 .dark-theme .right-sidebar {
-  background-color: var(--dark-background);
+  background-color: var(--dark-surface);
   border-left: 1px solid var(--dark-border);
 }
 
@@ -840,4 +964,180 @@ h3 {
 
 .dark-theme .premium-info p {
   opacity: 0.7;
+}
+
+/* Адаптивность для маленьких экранов */
+@media (max-width: 1200px) {
+  .right-sidebar {
+    width: 250px;
+  }
+}
+
+@media (max-width: 992px) {
+  .right-sidebar {
+    width: 220px;
+    padding: 10px;
+  }
+}
+
+/* Стили для заголовков разделов */
+.right-sidebar .section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--light-text-primary);
+  margin: 15px 0 8px 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--light-border);
+}
+
+/* Стили для списков */
+.right-sidebar .community-list,
+.right-sidebar .bookmarks-list,
+.right-sidebar .events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Общие стили для элементов списков */
+.right-sidebar .community-item,
+.right-sidebar .bookmark-item,
+.right-sidebar .event-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: var(--border-radius-md);
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.right-sidebar .community-item:hover,
+.right-sidebar .bookmark-item:hover,
+.right-sidebar .event-item:hover {
+  background-color: var(--light-hover);
+}
+
+/* Стили для иконок в элементах */
+.right-sidebar .community-icon,
+.right-sidebar .bookmark-icon,
+.right-sidebar .event-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light-text-secondary);
+}
+
+/* Стили для информации в элементах */
+.right-sidebar .community-info,
+.right-sidebar .bookmark-info,
+.right-sidebar .event-info {
+  flex: 1;
+  min-width: 0; /* Важно для предотвращения переполнения */
+}
+
+.right-sidebar .community-name,
+.right-sidebar .bookmark-name,
+.right-sidebar .event-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--light-text-primary);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.right-sidebar .community-meta,
+.right-sidebar .bookmark-meta,
+.right-sidebar .event-meta {
+  font-size: 11px;
+  color: var(--light-text-secondary);
+  margin: 0;
+}
+
+/* Стили для темной темы */
+.dark-theme .right-sidebar {
+  background-color: var(--dark-surface);
+  border-left: 1px solid var(--dark-border);
+}
+
+.dark-theme .right-sidebar .section-title {
+  color: var(--dark-text-primary);
+  border-bottom-color: var(--dark-border);
+}
+
+.dark-theme .right-sidebar .community-item:hover,
+.dark-theme .right-sidebar .bookmark-item:hover,
+.dark-theme .right-sidebar .event-item:hover {
+  background-color: var(--dark-hover);
+}
+
+.dark-theme .right-sidebar .community-icon,
+.dark-theme .right-sidebar .bookmark-icon,
+.dark-theme .right-sidebar .event-icon {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--dark-text-secondary);
+}
+
+.dark-theme .right-sidebar .community-name,
+.dark-theme .right-sidebar .bookmark-name,
+.dark-theme .right-sidebar .event-name {
+  color: var(--dark-text-primary);
+}
+
+.dark-theme .right-sidebar .community-meta,
+.dark-theme .right-sidebar .bookmark-meta,
+.dark-theme .right-sidebar .event-meta {
+  color: var(--dark-text-secondary);
+}
+
+.dark-theme .right-sidebar .premium-card {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(230, 194, 0, 0.1) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
+}
+
+.dark-theme .right-sidebar .premium-card::before {
+  background: rgba(255, 215, 0, 0.4);
+}
+
+.dark-theme .right-sidebar .premium-card-title {
+  color: var(--dark-premium-text);
+}
+
+.dark-theme .right-sidebar .premium-card-title svg {
+  color: var(--dark-premium);
+  filter: drop-shadow(0 0 3px var(--dark-premium-glow));
+}
+
+.dark-theme .right-sidebar .premium-card-content {
+  color: var(--dark-text-secondary);
+}
+
+.dark-theme .right-sidebar .premium-card-btn {
+  background: var(--dark-premium-banner);
+  color: var(--dark-premium-text);
+}
+
+.dark-theme .right-sidebar .premium-card-btn:hover {
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
+/* Адаптивность для маленьких экранов */
+@media (max-width: 1200px) {
+  .right-sidebar {
+    width: 250px;
+  }
+}
+
+@media (max-width: 992px) {
+  .right-sidebar {
+    width: 220px;
+    padding: 10px;
+  }
 } 

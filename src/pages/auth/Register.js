@@ -1,12 +1,61 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faUser, faEnvelope, faLock, faEye, faEyeSlash, 
-  faCheckCircle, faTimesCircle
+  faCheckCircle, faTimesCircle, faSun, faMoon
 } from '@fortawesome/free-solid-svg-icons';
 import AuthContext from '../../context/AuthContext';
 import '../../styles/AuthPages.css';
+
+// Компонент переключателя темы
+const ThemeSwitcher = () => {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  
+  useEffect(() => {
+    // Проверяем текущую тему при монтировании компонента
+    const darkModePreferred = localStorage.getItem('darkMode') === 'true';
+    setIsDarkTheme(darkModePreferred);
+    
+    if (darkModePreferred) {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+  }, []);
+  
+  const toggleTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+    
+    if (!isDarkTheme) {
+      document.body.classList.add('dark-theme');
+      localStorage.setItem('darkMode', 'true');
+    } else {
+      document.body.classList.remove('dark-theme');
+      localStorage.setItem('darkMode', 'false');
+    }
+  };
+  
+  return (
+    <div className="theme-switcher">
+      <div className="theme-title">Тема:</div>
+      <div className="theme-label">
+        <FontAwesomeIcon icon={faSun} />
+      </div>
+      <label className="theme-toggle">
+        <input 
+          type="checkbox" 
+          checked={isDarkTheme} 
+          onChange={toggleTheme} 
+        />
+        <span className="toggle-slider"></span>
+      </label>
+      <div className="theme-label">
+        <FontAwesomeIcon icon={faMoon} />
+      </div>
+    </div>
+  );
+};
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -166,10 +215,15 @@ const Register = () => {
   if (askForFullName) {
     return (
       <div className="auth-container">
+        <div className="bg-circle bg-circle-1"></div>
+        <div className="bg-circle bg-circle-2"></div>
+        <div className="bg-circle bg-circle-3"></div>
+        <div className="wave"></div>
         <div className="auth-card">
           <div className="auth-logo">
             <h1>OpenTalk</h1>
           </div>
+          <ThemeSwitcher />
           <h2 className="auth-title">Добро пожаловать!</h2>
           <p className="auth-description">
             Хотите указать своё полное имя или оставить никнейм?
@@ -214,10 +268,15 @@ const Register = () => {
   
   return (
     <div className="auth-container">
+      <div className="bg-circle bg-circle-1"></div>
+      <div className="bg-circle bg-circle-2"></div>
+      <div className="bg-circle bg-circle-3"></div>
+      <div className="wave"></div>
       <div className="auth-card register-card">
         <div className="auth-logo">
           <h1>OpenTalk</h1>
         </div>
+        <ThemeSwitcher />
         <h2 className="auth-title">Создание аккаунта</h2>
         
         {(localError || authError) && (
