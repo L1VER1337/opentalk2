@@ -2,9 +2,8 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
-  faHome, faSearch, faBell, faEnvelope, faPhone, faVideo, 
-  faMusic, faBrain, faUser, faCrown, faMoon, faSun, faBook,
-  faCircle, faDotCircle, faMoon as faMoonSolid, faTimes, faCog
+  faHome, faSearch, faBell, faEnvelope, faMusic, faBrain, faUser, faCrown, faMoon, faSun, faBook,
+  faCircle, faDotCircle, faMoon as faMoonSolid, faTimes, faCog, faUserFriends, faUsers
 } from '@fortawesome/free-solid-svg-icons';
 import ThemeContext from '../context/ThemeContext';
 import AuthContext from '../context/AuthContext';
@@ -80,12 +79,12 @@ const Sidebar = () => {
           <span>Сообщения</span>
         </div>
         <div className="menu-item">
-          <FontAwesomeIcon icon={faPhone} />
-          <span>Звонки</span>
+          <FontAwesomeIcon icon={faUserFriends} />
+          <span>Друзья</span>
         </div>
         <div className="menu-item">
-          <FontAwesomeIcon icon={faVideo} />
-          <span>Конференции</span>
+          <FontAwesomeIcon icon={faUsers} />
+          <span>Группы</span>
         </div>
         <div className="menu-item">
           <FontAwesomeIcon icon={faMusic} />
@@ -97,7 +96,7 @@ const Sidebar = () => {
         </div>
         <div className="menu-item">
           <FontAwesomeIcon icon={faBook} />
-          <span>Саморазвитие</span>
+          <span>Статьи</span>
         </div>
         <Link to="/profile" className="menu-item">
           <FontAwesomeIcon icon={faUser} />
