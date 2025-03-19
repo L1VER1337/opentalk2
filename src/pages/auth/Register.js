@@ -278,14 +278,12 @@ const Register = () => {
                 disabled={isSubmitting}
                 className={validationErrors.password ? 'error' : ''}
               />
-              <button
-                type="button"
+              <FontAwesomeIcon
+                icon={showPassword ? faEyeSlash : faEye}
                 className="toggle-password-btn"
                 onClick={() => togglePasswordVisibility('password')}
                 disabled={isSubmitting}
-              >
-                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
-              </button>
+              />
             </div>
             {validationErrors.password && (
               <div className="field-error">{validationErrors.password}</div>
@@ -322,14 +320,12 @@ const Register = () => {
                 disabled={isSubmitting}
                 className={validationErrors.password2 ? 'error' : ''}
               />
-              <button
-                type="button"
+              <FontAwesomeIcon
+                icon={showConfirmPassword ? faEyeSlash : faEye}
                 className="toggle-password-btn"
                 onClick={() => togglePasswordVisibility('confirm')}
                 disabled={isSubmitting}
-              >
-                <FontAwesomeIcon icon={showConfirmPassword ? faEyeSlash : faEye} />
-              </button>
+              />
             </div>
             {validationErrors.password2 && (
               <div className="field-error">{validationErrors.password2}</div>

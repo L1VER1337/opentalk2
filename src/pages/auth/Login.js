@@ -94,7 +94,7 @@ const Login = () => {
               />
               <FontAwesomeIcon
                 icon={showPassword ? faEyeSlash : faEye}
-                className="toggle-password"
+                className="toggle-password-btn"
                 onClick={togglePasswordVisibility}
               />
             </div>
